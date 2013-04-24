@@ -1,0 +1,23 @@
+BODLEVEL = 3V0
+HWBE = [X]
+DWEN = [ ]
+RSTDISBL = [ ]
+SPIEN = [X]
+WDTON = [ ]
+EESAVE = [ ]
+BOOTSZ = 2048W_3800
+BOOTRST = [ ]
+CKDIV8 = [X]
+CKOUT = [ ]
+SUT_CKSEL = EXTXOSC_8MHZ_XX_258CK_65MS
+
+EXTENDED = 0xF4 (valid)
+HIGH = 0xD9 (valid)
+LOW = 0x5E (valid)
+
+LB = NO_LOCK
+BLB0 = NO_LOCK
+BLB1 = NO_LOCK
+
+LOCKBIT = 0xFF (valid)
+

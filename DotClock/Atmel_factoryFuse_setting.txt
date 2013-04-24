@@ -1,0 +1,42 @@
+Device Info:
+Detected device
+Device name       ATmega32U2
+Device signature  0x1E958A
+
+Datasheet information
+                ATmega32U2
+CPU             8-bit AVR
+Flash size      32 Kbytes
+EEPROM size      1 Kbytes
+SRAM size        1 Kbytes
+VCC range      2.7 - 5.5 V
+Maximum speed      N/A
+
+
+Fuse Bits:
+BODLEVEL = 3V0
+HWBE = [X]
+DWEN = [ ]
+RSTDISBL = [ ]
+SPIEN = [X]
+WDTON = [ ]
+EESAVE = [ ]
+BOOTSZ = 2048W_3800
+BOOTRST = [ ]
+CKDIV8 = [X]
+CKOUT = [ ]
+SUT_CKSEL = EXTXOSC_8MHZ_XX_258CK_65MS
+
+EXTENDED = 0xF4 (valid)
+HIGH = 0xD9 (valid)
+LOW = 0x5E (valid)
+
+
+Lock Bits:
+
+LB = PROG_VER_DISABLED
+BLB0 = NO_LOCK
+BLB1 = SPM_DISABLE
+
+LOCKBIT = 0xEC (valid)
+
