@@ -1,0 +1,18 @@
+The Attiny project is a Atmel Studio 6 project. 
+Open the .atsln file and choose the proper configuartioon "release or debug" under "Solution properties" Configuartion mananger 
+before building and programming of a device.
+
+The program is compiled by:  AVRGCC - 3.4.0.65, AVR Toolchain 8 Bit,Version: 3.4.0.663 - GCC  4.6.2
+
+ATtiny 4313 Fuse settings are as follows and need to be programmed with the ICD (6pin) communication protocol.
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+EXTENDED = 0xFF 
+HIGH = 0xDF, or 0x5F for DebugWire enable
+LOW = 0xE4 
+
+No lock bits set at this time.
+
+Programming of the device can be accomplished via the ICD or the Debugwire communciation protocol, however atmel devices default to the 
+6 wire ICD protocol, and therefore the fuses have to be set with that program initailly.
+
+
