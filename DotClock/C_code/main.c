@@ -220,9 +220,9 @@ int main(void)
 					break;
 					
 				case 3:						// bright level
-					if (OCR0A < OCR0B)
+					if (OCR0A < (OCR0B +10) )
 					{
-						OCR0A++;
+						OCR0A +=10;
 						EE_data.bright_level =OCR0A;
 					}						
 					break;
@@ -258,9 +258,9 @@ int main(void)
 					break;
 					
 				case 3:						// bright level
-					if (OCR0A >0)	
+					if (OCR0A >50)	
 					{
-						OCR0A--;
+						OCR0A -=10;
 						EE_data.bright_level =OCR0A;
 					}						
 					break;
