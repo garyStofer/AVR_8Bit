@@ -1,0 +1,5 @@
+Current measurments:
+
+AT32U4/ @5V, @16 Mhz : 20 ma 
+Led Dim 			 : 0.2ma 
+Led Bright			 : 8.8 ma 
