@@ -39,7 +39,7 @@
 
 
 #define LED_BRIGHT  100	// 0 == max brightness 
-#define LED_DIMM	250 // 255 == min brightness, i.e OFF
+#define LED_DIMM	253 // 255 == min brightness, i.e OFF
 
 // global vars
 unsigned char Seconds = 0;
@@ -137,7 +137,7 @@ int main(void)
 	
 	eeprom_read_block( &EE_data,0,sizeof(EE_data));
 		
-	if (EE_data.bright_level == 0xff || EE_data.dim_level == 0xff)
+	if (EE_data.bright_level == 0xff && EE_data.dim_level == 0xff)
 	{
 		EE_data.bright_level = LED_BRIGHT;
 		EE_data.dim_level = LED_DIMM;
@@ -174,10 +174,10 @@ int main(void)
 		if (IsButtonPressed(BUTTON1) )
 		{
 
-			// de-bounce -- 5 consecutive reads of switch open 
-			for (tmp =0; tmp<=5; tmp++)
+			// de-bounce -- 10 consecutive reads of switch open 
+			for (tmp =0; tmp<=10; tmp++)
 			{
-				_delay_ms(1);
+				_delay_ms(2);
 				if (IsButtonPressed(BUTTON1))
 					tmp = 0;
 			}
@@ -193,18 +193,18 @@ int main(void)
 		
 		}			
 				
-		if (IsButtonPressed(BUTTON2) )
+		if (IsButtonPressed(BUTTON2) ) // increases Minutes and decrease brightness 
 		{
 
-			// de-bounce -- 5 consecutive reads of switch open
-			for (tmp =0; tmp<=5; tmp++)
+			// de-bounce -- 10 consecutive reads of switch open
+			for (tmp =0; tmp<=10; tmp++)
 			{
-				_delay_ms(1);
+				_delay_ms(2);
 				if (IsButtonPressed(BUTTON2))
 				tmp = 0;
 			}
 			
-			switch (mode)
+			switch (mode) 
 			{
 				case 1:
 					Minutes++;
@@ -220,9 +220,9 @@ int main(void)
 					break;
 					
 				case 3:						// bright level
-					if (OCR0A < (OCR0B +10) )
+					if (OCR0A < OCR0B-10  )		// make sure that bright is at least 10 counts brighter than dim
 					{
-						OCR0A +=10;
+						OCR0A +=10;				// step in increments of 10
 						EE_data.bright_level =OCR0A;
 					}						
 					break;
@@ -230,13 +230,13 @@ int main(void)
 			
 		}	
 		
-		if (IsButtonPressed(BUTTON3) )
+		if (IsButtonPressed(BUTTON3) )	// Increases Hours and increase brightness
 		{
 
-			// de-bounce -- 5 consecutive reads of switch open
-			for (tmp =0; tmp<=5; tmp++)
+			// de-bounce -- 10 consecutive reads of switch open
+			for (tmp =0; tmp<=10; tmp++)
 			{
-				_delay_ms(1);
+				_delay_ms(2);
 				if (IsButtonPressed(BUTTON3))
 				tmp = 0;
 			}
@@ -249,7 +249,7 @@ int main(void)
 					break;
 					
 				case 2:
-					if (OCR0B > OCR0A)		// dim level
+					if (OCR0B > OCR0A+10)		// dim level
 					{	
 
 						OCR0B--;
@@ -258,9 +258,9 @@ int main(void)
 					break;
 					
 				case 3:						// bright level
-					if (OCR0A >50)	
+					if (OCR0A > 20)	
 					{
-						OCR0A -=10;
+						OCR0A -=10;		//step in increments of 10
 						EE_data.bright_level =OCR0A;
 					}						
 					break;
